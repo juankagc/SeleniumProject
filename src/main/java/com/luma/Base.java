@@ -1,23 +1,26 @@
-import com.pageObjects.AccountPage;
-import com.pageObjects.MainPage;
-import com.pageObjects.SignUpFormPage;
+package com.luma;
+
+import com.pageobjects.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 
 import java.time.Duration;
 
-public class BaseTest {
+public class Base {
 
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected MainPage mainPage;
     protected SignUpFormPage signUpFormPage;
     protected AccountPage accountPage;
+    protected YogaShopPage yogaShopPage;
+    protected ProductPage productPage;
+    protected CheckoutPage checkoutPage;
+
 
     @BeforeClass
     public void setUpDriver(){
@@ -28,8 +31,11 @@ public class BaseTest {
         mainPage = new MainPage(driver);
         signUpFormPage = new SignUpFormPage(driver);
         accountPage = new AccountPage(driver);
+        yogaShopPage = new YogaShopPage(driver);
+        productPage = new ProductPage(driver);
+        checkoutPage = new CheckoutPage(driver);
     }
-    @AfterClass
+@BeforeClass
     public void tearDownDriver(){
         driver.quit();
     }

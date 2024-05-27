@@ -1,4 +1,4 @@
-package com.pageObjects;
+package com.pageobjects;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
@@ -7,11 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
 
-public class AccountPage extends MainPage{
+public class AccountPage extends MainPage {
 
     @FindBy(xpath = "//*[contains(text(), 'Thank you')]")
     private WebElement successfulRegisterMessage;

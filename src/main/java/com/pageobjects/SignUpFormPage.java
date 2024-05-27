@@ -1,5 +1,6 @@
-package com.pageObjects;
+package com.pageobjects;
 
+import com.pageobjects.MainPage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -37,7 +38,4 @@ public class SignUpFormPage extends MainPage {
         passwordConfirmationTextField.sendKeys(password);
         createAccountButton.click();
     }
-
-
-
 }

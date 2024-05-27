@@ -1,11 +1,10 @@
-package com.pageObjects;
+package com.pageobjects;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -19,8 +18,11 @@ public class MainPage {
     private WebElement signInButton;
     @FindBy(xpath ="//div[@class='panel header']//a[normalize-space()='Create an Account']")
     private WebElement registerButton;
+    @FindBy(xpath = "//span[@class='action more button']")
+    private WebElement shopYogaButton;
     protected static WebDriver driver;
     protected static WebDriverWait wait;
+
 
     public final String url = "https://magento.softwaretestingboard.com/";
 
@@ -47,5 +49,14 @@ public class MainPage {
         wait.until(ExpectedConditions.visibilityOf(signInButton));
         signInButton.click();
     }
-
+    @Step("Go to Main Menu")
+    public void goToMainMenu(){
+        wait.until(ExpectedConditions.visibilityOf(pageLogo));
+        pageLogo.click();
+    }
+    @Step("Go to Yoga Shop")
+    public void goToYogaShop(){
+        wait.until(ExpectedConditions.visibilityOf(shopYogaButton));
+        shopYogaButton.click();
+    }
 }

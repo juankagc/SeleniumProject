@@ -1,4 +1,4 @@
-package com.utilities;
+package com.luma.utilities;
 
 public class RandomEmail {
     public static String randomEmail(){
