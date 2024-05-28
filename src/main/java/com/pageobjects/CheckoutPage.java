@@ -43,7 +43,7 @@ public class CheckoutPage extends MainPage {
         super(driver);
     }
     @Step("Fill In Shipping Address in Checkout Page")
-    public void fillCheckoutShippingFormNewCustomer(String firstName, String lastName, String company, String address, String city, String state, String countryId, String zipCode, String phone) {
+    public void fillInShippingFormNewCustomer(String firstName, String lastName, String company, String address, String city, String state, String countryId, String zipCode, String phone) {
         /*
         * Waiting for all elements to be present,
         * considering Phone Text Area is the last field

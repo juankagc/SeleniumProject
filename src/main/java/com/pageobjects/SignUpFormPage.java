@@ -22,14 +22,17 @@ public class SignUpFormPage extends MainPage {
     private WebElement passwordConfirmationTextField;
     @FindBy(xpath = "//div/button[@type='submit' and @title='Create an Account']")
     private WebElement createAccountButton;
+    @FindBy(xpath = "//*[contains(@id,'-error') and not(contains(@id,'password'))]")
+    private WebElement errorMessageMissingFields;
+    @FindBy(xpath = "//*[contains(@id,'-error')]")
+    private WebElement errorMessagePasswordField;
 
     public SignUpFormPage(WebDriver driver){
         super(driver);
         PageFactory.initElements(driver,this);
     }
-
     @Step("Create a New Account")
-    public void createNewAccount(String firstName, String lastName, String password, String email) {
+    public void createNewAccount(String firstName, String lastName, String email, String password) {
         wait.until(ExpectedConditions.visibilityOf(createAccountButton));
         firstNameTextField.sendKeys(firstName);
         lastNameTextField.sendKeys(lastName);
@@ -38,4 +41,6 @@ public class SignUpFormPage extends MainPage {
         passwordConfirmationTextField.sendKeys(password);
         createAccountButton.click();
     }
+    public boolean lblGenericErrorMissingFieldsIsDisplayed() {return errorMessageMissingFields.isDisplayed(); }
+    public boolean lblErrorPasswordFieldIsDisplayed() {return errorMessagePasswordField.isDisplayed(); }
 }

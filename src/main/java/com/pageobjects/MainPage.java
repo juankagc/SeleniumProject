@@ -12,14 +12,16 @@ import java.time.Duration;
 
 public class MainPage {
 
-    @FindBy(xpath ="//*[@class='logo']")
+    @FindBy(xpath = "//*[@class='logo']")
     private WebElement pageLogo;
-    @FindBy(xpath ="//div[@class='panel header']//a[normalize-space()='Create an Account']")
+    @FindBy(xpath = "//div[@class='panel header']//a[normalize-space()='Sign In']")
     private WebElement signInButton;
-    @FindBy(xpath ="//div[@class='panel header']//a[normalize-space()='Create an Account']")
+    @FindBy(xpath = "//div[@class='panel header']//a[normalize-space()='Create an Account']")
     private WebElement registerButton;
     @FindBy(xpath = "//span[@class='action more button']")
     private WebElement shopYogaButton;
+    @FindBy(className = "logged-in")
+    private WebElement userLoggedInFlag;
     protected static WebDriver driver;
     protected static WebDriverWait wait;
 
@@ -27,36 +29,48 @@ public class MainPage {
     public final String url = "https://magento.softwaretestingboard.com/";
 
     public MainPage(WebDriver webDriver) {
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
         driver = webDriver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10), Duration.ofMillis(100));
     }
-    public String getUrl(){
+
+    public String getUrl() {
         return url;
     }
 
     @Step("Verify the Page loads successfully")
-    public void verifyPageLogo(){
+    public void verifyPageLogo() {
         wait.until(ExpectedConditions.visibilityOf(pageLogo));
     }
+
     @Step("Click on Register button")
-    public void clickOnRegisterButton(){
+    public void clickOnRegisterButton() {
         wait.until(ExpectedConditions.visibilityOf(registerButton));
         registerButton.click();
     }
+
     @Step("Click on Sign In button")
-    public void clickOnSignInButton(){
+    public void clickOnSignInButton() {
         wait.until(ExpectedConditions.visibilityOf(signInButton));
         signInButton.click();
     }
+
     @Step("Go to Main Menu")
-    public void goToMainMenu(){
+    public void goToMainMenu() {
         wait.until(ExpectedConditions.visibilityOf(pageLogo));
         pageLogo.click();
     }
+
     @Step("Go to Yoga Shop")
-    public void goToYogaShop(){
+    public void goToYogaShop() {
         wait.until(ExpectedConditions.visibilityOf(shopYogaButton));
         shopYogaButton.click();
     }
+
+    @Step("Verify User is Logged In")
+    public boolean verifyUserLoggedIn() {
+        wait.until(ExpectedConditions.visibilityOf(userLoggedInFlag));
+        return userLoggedInFlag.isDisplayed();
+    }
 }
+

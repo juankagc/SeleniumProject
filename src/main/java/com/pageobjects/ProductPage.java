@@ -39,12 +39,6 @@ public class ProductPage extends MainPage {
         inputQtyField.sendKeys(quantity);
         wait.until(ExpectedConditions.elementToBeClickable(addToCartButton));
         addToCartButton.click();
-        try{
-            Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-            String alertText = alert.getText();
-            Assert.assertTrue(alertText.contains("added to your shopping cart"),"Added to shopping cart");
-            System.out.println("Alert Text: " + alertText);
-        } catch (Exception e){}
     }
     @Step("Go to Checkout")
     public void goToCheckout(){

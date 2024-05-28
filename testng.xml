@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name = "Account Tests Suite">
+    <test name="Test Account Creation">
+        <classes>
+            <class name="luma.accounttests.AccountCreationTests"/>
+        </classes>
+    </test>
+    <test name="Test Account Login">
+        <classes>
+            <class name="luma.accounttests.AccountLoginTests"/>
+        </classes>
+    </test>
+</suite>
